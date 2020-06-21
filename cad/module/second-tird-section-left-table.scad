@@ -122,19 +122,17 @@ difference () {
 translate([
     thickness,
     0,
-    (height-thickness*3
-    -referenceSurfaceHeight)]) 
+    height-thickness-drawerHeight]) 
 cube(size = [
     length-thickness*2,
     thickness,
-    height-(height-thickness*3
-    -referenceSurfaceHeight)-thickness]);
+    drawerHeight]);
 
 translate([
     length/2,                   
     -1,   
-    (height+(height-thickness*3
-    -referenceSurfaceHeight))/2
+    (height-thickness-drawerHeight)+
+    (drawerHeight/4*3)
     ])  
 rotate([270,0,0])
 cylinder(
