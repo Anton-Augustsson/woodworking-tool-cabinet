@@ -8,6 +8,7 @@
 */
 
 use <cabinet.scad>;
+use <dovetail-drawer.scad>;
 
 module tirdSectionLeftCabinet (
     plywoodThickness,
@@ -52,7 +53,33 @@ cabinet (
     width,
     height
     );
-    
+
+dovetailDrawer (
+    14,
+    14,
+    20,
+    width-thickness,
+    height-thickness*2,
+    (length-thickness*2)/2,
+    thickness,
+    0,
+    height-thickness*2+thickness,
+    90
+    );
+
+dovetailDrawer (
+    14,
+    14,
+    20,
+    width-thickness,
+    height-thickness*2,
+    (length-thickness*2)/2,
+    -(length-thickness*2)/2+thickness
+    +(length-thickness*2),
+    0,
+    height-thickness*2+thickness,
+    90
+    );
 }}
 
 

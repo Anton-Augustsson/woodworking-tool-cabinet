@@ -31,7 +31,7 @@ length=lengthMiddleSection
 
 widthCabinet     = 300;
 widthCabinetDoor = widthCabinet/3;
-widthTable       = 300;
+widthTable       = 400;
 width            = widthCabinet+widthTable;
 
 heightTable   = 900;

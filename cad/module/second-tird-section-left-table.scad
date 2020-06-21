@@ -8,6 +8,7 @@
 */
 
 use <cabinet.scad>;
+use <dovetail-drawer.scad>;
 
 module secondTirdSectionLeftTable (
     plywoodThickness,
@@ -34,7 +35,15 @@ length = lengthSecondSection+
 width  = widthTable+widthCabinet;
 height = heightTable;
 
+drawerHeight = 100;
+referenceSurfaceHeight = drawerHeight;
 
+numberOfDividers = 4;
+increse = (length-thickness*2
+        -numberOfDividers*thickness)
+        /(numberOfDividers+1)
+        -0.01;
+        
 /*
     ---------- Code ---------- 
 */
@@ -53,6 +62,61 @@ cabinet (
     width,
     height
     );
+
+// Top shelf
+translate([
+    thickness,
+    0,
+    height-thickness*3
+    -referenceSurfaceHeight]) 
+cube(size = [
+    length-thickness*2,
+    width,
+    thickness*2]);
+
+// Drawer shelf
+translate([
+    thickness,
+    0,
+    height-thickness*4
+    -referenceSurfaceHeight
+    -drawerHeight]) 
+cube(size = [
+    length-thickness*2,
+    width,
+    thickness]);
+    
+// Drawer
+dovetailDrawer (
+    14,
+    14,
+    20,
+    width-thickness,
+    length-thickness*2,
+    drawerHeight,
+    thickness,0,height-thickness*3
+    -referenceSurfaceHeight
+    -drawerHeight,
+    0
+    );
+    
+// Devider no.1
+
+for(i = [
+    increse:
+    increse+thickness: 
+    length-thickness*2-increse
+    ])
+    translate([
+        i,
+        0,
+        thickness]) 
+        cube(size = [
+        thickness,
+        width,
+        height-thickness*4
+        -referenceSurfaceHeight
+        -drawerHeight]);
 
 }}
 

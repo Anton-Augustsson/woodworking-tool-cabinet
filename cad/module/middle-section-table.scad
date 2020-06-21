@@ -8,6 +8,7 @@
 */
 
 use <cabinet.scad>;
+use <sink.scad>;
 
 module middleSectionTable (
     plywoodThickness,
@@ -33,6 +34,8 @@ length = lengthMiddleSection;
 width  = widthTable+widthCabinet;
 height = heightTable;
 
+sharpeningHeight=660;
+        
 
 /*
     ---------- Code ---------- 
@@ -52,6 +55,34 @@ cabinet (
     width,
     height
     );
+
+difference () {
+// Top shelf
+translate([
+    thickness,
+    0,
+    sharpeningHeight-thickness*2]) 
+cube(size = [
+    length-thickness*2,
+    width,
+    thickness*2]);
+
+translate([
+    length/2-(400+4*2)/2,
+    -1,
+    sharpeningHeight-thickness*2-1]) 
+cube(size = [
+    400+4*2,
+    330+30+4*2,
+    thickness*2+2]);
+}
+
+sink (
+    length/2-460/2,
+    0,
+    sharpeningHeight-180+4
+    );
+
 }}
 
 

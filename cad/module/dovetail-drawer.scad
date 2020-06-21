@@ -13,22 +13,33 @@ module dovetailDrawer (
     thicknessBottom,
     thicknessSide,
     thicknessFront,
-    length,
-    width,
-    height,
-    x,y,z,
-    xRotate
+    lenghtDrawer,
+    widthDrawer,
+    heightDrawer,
+    xDrawer,yDrawer,zDrawer,
+    yRotate
     ){
 /*
     ---------- Local varibles ---------- 
 */
 
+length = lenghtDrawer;
+width  = widthDrawer;
+height = heightDrawer;
 
+x=xDrawer;
+y=yDrawer;
+z=zDrawer;
 
 /*
     ---------- Code ---------- 
 */
-rotate([xRotate,0,0])
+
+translate([
+    x,
+    y,
+    z]) 
+rotate([0,yRotate,0])
 difference () {
 union () {
 
@@ -119,7 +130,7 @@ height = 100;
 x=0;
 y=0;
 z=0;
-xRotate=0;
+yRotate=0;
 
 dovetailDrawer (
     thicknessBottom,
@@ -129,5 +140,5 @@ dovetailDrawer (
     width,
     height,
     x,y,z,
-    xRotate
+    yRotate
     );
