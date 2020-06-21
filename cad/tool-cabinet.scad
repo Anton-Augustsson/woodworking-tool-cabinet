@@ -7,6 +7,14 @@
     
 */
 
+use <module/middle-section-table.scad>;
+use <module/middle-section-cabinet.scad>;
+use <module/second-section-left-cabinet.scad>;
+use <module/second-section-right-cabinet.scad>;
+use <module/second-tird-section-left-table.scad>;
+use <module/second-tird-section-right-table.scad>;
+use <module/tird-section-left-cabinet.scad>;
+use <module/tird-section-right-cabinet.scad>;
 
 /*
     ---------- Variables ---------- 
@@ -39,164 +47,57 @@ heightCabinet = 900;
 
 // ---------- Table unit ---------- 
 union () {
-
     
 // Left table storageUunit
 color("BurlyWood")
-union () {
-
-// Left
-translate([
-    0,
-    0,
-    0]) 
-cube(size = [
+secondTirdSectionLeftTable (
     plywoodThickness,
+    lengthMiddleSection,
+    lengthSecondSection,
+    length,
+    widthCabinet,
+    widthCabinetDoor,
+    widthTable,
     width,
-    heightTable-plywoodThickness]);
-
-// Right
-translate([
-    lengthSecondSection+lengthTirdSection
-    -plywoodThickness,
-    0,
-    0]) 
-cube(size = [
-    plywoodThickness,
-    width,
-    heightTable-plywoodThickness]);
-    
-// Bottom 
-translate([
-    plywoodThickness,
-    0,
-    0]) 
-cube(size = [
-    lengthSecondSection+lengthTirdSection
-    -plywoodThickness*2,
-    width,
-    plywoodThickness]);
-
-// Back
-translate([
-    plywoodThickness,
-    width-plywoodThickness,
-    0]) 
-cube(size = [
-    lengthSecondSection+lengthTirdSection
-    -plywoodThickness*2,
-    plywoodThickness,
-    heightTable-plywoodThickness]);
-}
-
+    heightTable,
+    heightCabinet,
+    0,0,0
+    );
 
 // middle table storageUunit
 color("Tan")
-union () {
-
-// Left
-translate([
+middleSectionTable (
+    plywoodThickness,
+    lengthMiddleSection,
+    lengthSecondSection,
+    length,
+    widthCabinet,
+    widthCabinetDoor,
+    widthTable,
+    width,
+    heightTable,
+    heightCabinet,
     lengthSecondSection+lengthTirdSection,
-    0,
-    0]) 
-cube(size = [
-    plywoodThickness,
-    width,
-    heightTable-plywoodThickness]);
-
-// Right
-translate([
-    lengthSecondSection+lengthTirdSection
-    +lengthMiddleSection
-    -plywoodThickness,
-    0,
-    0]) 
-cube(size = [
-    plywoodThickness,
-    width,
-    heightTable-plywoodThickness]);
-    
-// Bottom 
-translate([
-    lengthSecondSection+lengthTirdSection
-    +plywoodThickness,
-    0,
-    0]) 
-cube(size = [
-    lengthMiddleSection
-    -plywoodThickness*2,
-    width,
-    plywoodThickness]);
-
-// Back
-translate([
-    lengthSecondSection+lengthTirdSection
-    +plywoodThickness,
-    width-plywoodThickness,
-    0]) 
-cube(size = [
-    lengthMiddleSection
-    -plywoodThickness*2,
-    plywoodThickness,
-    heightTable-plywoodThickness]);
-}
-
+    0,0
+    );
 
 // Right table storageUunit
 color("BurlyWood")
-union () {
-
-// Left
-translate([
+secondTirdSectionRightTable (
+    plywoodThickness,
+    lengthMiddleSection,
+    lengthSecondSection,
+    length,
+    widthCabinet,
+    widthCabinetDoor,
+    widthTable,
+    width,
+    heightTable,
+    heightCabinet,
     lengthMiddleSection+
     lengthSecondSection+lengthTirdSection,
-    0,
-    0]) 
-cube(size = [
-    plywoodThickness,
-    width,
-    heightTable-plywoodThickness]);
-
-// Right
-translate([
-    lengthMiddleSection+
-    lengthSecondSection+lengthTirdSection
-    +lengthSecondSection+lengthTirdSection
-    -plywoodThickness,
-    0,
-    0]) 
-cube(size = [
-    plywoodThickness,
-    width,
-    heightTable-plywoodThickness]);
-    
-// Bottom 
-translate([
-    lengthMiddleSection+
-    lengthSecondSection+lengthTirdSection
-    +plywoodThickness,
-    0,
-    0]) 
-cube(size = [
-    lengthSecondSection+lengthTirdSection
-    -plywoodThickness*2,
-    width,
-    plywoodThickness]);
-
-// Back
-translate([
-    lengthMiddleSection+
-    lengthSecondSection+lengthTirdSection
-    +plywoodThickness,
-    width-plywoodThickness,
-    0]) 
-cube(size = [
-    lengthSecondSection+lengthTirdSection
-    -plywoodThickness*2,
-    plywoodThickness,
-    heightTable-plywoodThickness]);
-}
-
+    0,0
+    );
 
 // Right table storageUunit
 color("Tan")
@@ -219,263 +120,95 @@ union () {
 
 // Left table storageUunit
 color("BurlyWood")
-union () {
-
-// Left
-translate([
+tirdSectionLeftCabinet (
+    plywoodThickness,
+    lengthMiddleSection,
+    lengthSecondSection,
+    length,
+    widthCabinet,
+    widthCabinetDoor,
+    widthTable,
+    width,
+    heightTable,
+    heightCabinet,
     0,
     width-widthCabinet,
-    heightTable]) 
-cube(size = [
-    plywoodThickness,
-    widthCabinet,
-    heightCabinet-plywoodThickness]);
-
-// Right
-translate([
-    lengthTirdSection
-    -plywoodThickness,
-    width-widthCabinet,
-    heightTable]) 
-cube(size = [
-    plywoodThickness,
-    widthCabinet,
-    heightCabinet-plywoodThickness]);
-    
-// Bottom 
-translate([
-    plywoodThickness,
-    width-widthCabinet,
-    heightTable]) 
-cube(size = [
-    lengthTirdSection
-    -plywoodThickness*2,
-    widthCabinet-plywoodThickness,
-    plywoodThickness]);
-
-// Back
-translate([
-    plywoodThickness,
-    width-plywoodThickness,
-    heightTable]) 
-cube(size = [
-    lengthTirdSection
-    -plywoodThickness*2,
-    plywoodThickness,
-    heightCabinet-plywoodThickness]);
-}
-
+    heightTable
+    );
 
 // Middle Left table storageUunit
 color("Tan")
-union () {
-
-// Left
-translate([
+secondSectionLeftCabinet (
+    plywoodThickness,
+    lengthMiddleSection,
+    lengthSecondSection,
+    length,
+    widthCabinet,
+    widthCabinetDoor,
+    widthTable,
+    width,
+    heightTable,
+    heightCabinet,
     lengthTirdSection,
     width-widthCabinet,
-    heightTable]) 
-cube(size = [
-    plywoodThickness,
-    widthCabinet,
-    heightCabinet-plywoodThickness]);
+    heightTable
+    );
 
-// Right
-translate([
-    lengthTirdSection+lengthSecondSection
-    -plywoodThickness,
-    width-widthCabinet,
-    heightTable]) 
-cube(size = [
-    plywoodThickness,
-    widthCabinet,
-    heightCabinet-plywoodThickness]);
-    
-// Bottom 
-translate([
-    lengthTirdSection+plywoodThickness,
-    width-widthCabinet,
-    heightTable]) 
-cube(size = [
-    lengthSecondSection
-    -plywoodThickness*2,
-    widthCabinet-plywoodThickness,
-    plywoodThickness]);
-
-// Back
-translate([
-    lengthTirdSection+plywoodThickness,
-    width-plywoodThickness,
-    heightTable]) 
-cube(size = [
-    lengthSecondSection
-    -plywoodThickness*2,
-    plywoodThickness,
-    heightCabinet-plywoodThickness]);
-}
-
-
-// Middle table storageUunit
+// Middle storageUnit
 color("BurlyWood")
-union () {
-
-// Left
-translate([
+middleSectionCabinet (
+    plywoodThickness,
+    lengthMiddleSection,
+    lengthSecondSection,
+    length,
+    widthCabinet,
+    widthCabinetDoor,
+    widthTable,
+    width,
+    heightTable,
+    heightCabinet,
     lengthSecondSection+lengthTirdSection,
     width-widthCabinet,
-    heightTable]) 
-cube(size = [
-    plywoodThickness,
-    widthCabinet,
-    heightCabinet-plywoodThickness]);
-
-// Right
-translate([
-    lengthSecondSection+lengthTirdSection
-    +lengthMiddleSection-plywoodThickness,
-    width-widthCabinet,
-    heightTable]) 
-cube(size = [
-    plywoodThickness,
-    widthCabinet,
-    heightCabinet-plywoodThickness]);
-    
-// Bottom 
-translate([
-    lengthSecondSection+lengthTirdSection
-    +plywoodThickness,
-    width-widthCabinet,
-    heightTable]) 
-cube(size = [
-    lengthMiddleSection
-    -plywoodThickness*2,
-    widthCabinet-plywoodThickness,
-    plywoodThickness]);
-
-// Back
-translate([
-    lengthSecondSection+lengthTirdSection
-    +plywoodThickness,
-    width-plywoodThickness,
-    heightTable]) 
-cube(size = [
-    lengthMiddleSection
-    -plywoodThickness*2,
-    plywoodThickness,
-    heightCabinet-plywoodThickness]);
-}
-
+    heightTable
+    );
 
 // Middle Right table storageUunit
 color("Tan")
-union () {
-
-// Left
-translate([
+secondSectionRightCabinet (
+    plywoodThickness,
+    lengthMiddleSection,
+    lengthSecondSection,
+    length,
+    widthCabinet,
+    widthCabinetDoor,
+    widthTable,
+    width,
+    heightTable,
+    heightCabinet,
     lengthMiddleSection+
     lengthSecondSection+lengthTirdSection,
     width-widthCabinet,
-    heightTable]) 
-cube(size = [
-    plywoodThickness,
-    widthCabinet,
-    heightCabinet-plywoodThickness]);
-
-// Right
-translate([
-    lengthMiddleSection+
-    lengthSecondSection+lengthTirdSection
-    +lengthSecondSection
-    -plywoodThickness,
-    width-widthCabinet,
-    heightTable]) 
-cube(size = [
-    plywoodThickness,
-    widthCabinet,
-    heightCabinet-plywoodThickness]);
+    heightTable
+    );
     
-// Bottom 
-translate([
-    lengthMiddleSection+
-    lengthSecondSection+lengthTirdSection
-    +plywoodThickness,
-    width-widthCabinet,
-    heightTable]) 
-cube(size = [
-    lengthSecondSection
-    -plywoodThickness*2,
-    widthCabinet-plywoodThickness,
-    plywoodThickness]);
-
-// Back
-translate([
-    lengthMiddleSection+
-    lengthSecondSection+lengthTirdSection
-    +plywoodThickness,
-    width-plywoodThickness,
-    heightTable]) 
-cube(size = [
-    lengthSecondSection
-    -plywoodThickness*2,
-    plywoodThickness,
-    heightCabinet-plywoodThickness]);
-}
-
 // Right table storageUunit
 color("BurlyWood")
-union () {
-
-// Left
-translate([
+tirdSectionRightCabinet (
+    plywoodThickness,
+    lengthMiddleSection,
+    lengthSecondSection,
+    length,
+    widthCabinet,
+    widthCabinetDoor,
+    widthTable,
+    width,
+    heightTable,
+    heightCabinet,
     lengthMiddleSection+
     lengthSecondSection*2+lengthTirdSection,
     width-widthCabinet,
-    heightTable]) 
-cube(size = [
-    plywoodThickness,
-    widthCabinet,
-    heightCabinet-plywoodThickness]);
-
-// Right
-translate([
-    lengthMiddleSection+
-    lengthSecondSection*2+lengthTirdSection
-    +lengthTirdSection
-    -plywoodThickness,
-    width-widthCabinet,
-    heightTable]) 
-cube(size = [
-    plywoodThickness,
-    widthCabinet,
-    heightCabinet-plywoodThickness]);
-    
-// Bottom 
-translate([
-    lengthMiddleSection+
-    lengthSecondSection*2+lengthTirdSection
-    +plywoodThickness,
-    width-widthCabinet,
-    heightTable]) 
-cube(size = [
-    lengthTirdSection
-    -plywoodThickness*2,
-    widthCabinet-plywoodThickness,
-    plywoodThickness]);
-
-// Back
-translate([
-    lengthMiddleSection+
-    lengthSecondSection*2+lengthTirdSection
-    +plywoodThickness,
-    width-plywoodThickness,
-    heightTable]) 
-cube(size = [
-    lengthTirdSection
-    -plywoodThickness*2,
-    plywoodThickness,
-    heightCabinet-plywoodThickness]);
-}
-
+    heightTable
+    );
 
 // Top
 color("Tan")
