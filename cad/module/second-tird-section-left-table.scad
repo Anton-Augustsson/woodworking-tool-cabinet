@@ -85,8 +85,8 @@ cube(size = [
     length-thickness*2,
     width,
     thickness]);
-    
-// Drawer
+   
+// Drawer lower
 dovetailDrawer (
     14,
     14,
@@ -100,8 +100,7 @@ dovetailDrawer (
     0
     );
     
-// Devider no.1
-
+// Devider 
 for(i = [
     increse:
     increse+thickness: 
@@ -118,6 +117,31 @@ for(i = [
         -referenceSurfaceHeight
         -drawerHeight]);
 
+difference () {
+// Latch
+translate([
+    thickness,
+    0,
+    (height-thickness*3
+    -referenceSurfaceHeight)]) 
+cube(size = [
+    length-thickness*2,
+    thickness,
+    height-(height-thickness*3
+    -referenceSurfaceHeight)-thickness]);
+
+translate([
+    length/2,                   
+    -1,   
+    (height+(height-thickness*3
+    -referenceSurfaceHeight))/2
+    ])  
+rotate([270,0,0])
+cylinder(
+    h = thickness+2,    
+    r = 10        
+    );      
+}
 }}
 
 

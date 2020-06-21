@@ -57,14 +57,15 @@ cabinet (
     );
 
 difference () {
+
 // Top shelf
 translate([
     thickness,
-    0,
+    thickness,
     sharpeningHeight-thickness*2]) 
 cube(size = [
     length-thickness*2,
-    width,
+    width-thickness,
     thickness*2]);
 
 translate([
@@ -82,6 +83,64 @@ sink (
     0,
     sharpeningHeight-180+4
     );
+
+
+// Bottom shelf
+translate([
+    thickness,
+    thickness,
+    200]) 
+cube(size = [
+    length-thickness*2,
+    width-thickness,
+    thickness*2]);
+
+ 
+difference () {
+// Door
+translate([
+    thickness,
+    0,
+    thickness]) 
+cube(size = [
+    length-thickness*2,
+    thickness,
+    sharpeningHeight-thickness]);
+
+translate([
+    length/2,                   
+    -1,   
+    height/2
+    ])  
+rotate([270,0,0])
+cylinder(
+    h = thickness+2,    
+    r = 10        
+    );      
+}
+
+difference () {
+// Latch
+translate([
+    thickness,
+    0,
+    sharpeningHeight+4]) 
+cube(size = [
+    length-thickness*2,
+    thickness,
+    height-sharpeningHeight+4-thickness]);
+
+translate([
+    length/2,                   
+    -1,   
+    (height+sharpeningHeight)/2
+    ])  
+rotate([270,0,0])
+cylinder(
+    h = thickness+2,    
+    r = 10        
+    );      
+}
 
 }}
 
