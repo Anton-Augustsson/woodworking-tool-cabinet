@@ -8,6 +8,7 @@
 */
 
 use <cabinet.scad>;
+use <door.scad>;
 
 module secondSectionLeftCabinet (
     plywoodThickness,
@@ -52,6 +53,18 @@ cabinet (
     width,
     height
     );
+
+door (
+    12,
+    12,
+    12,
+    length/2,
+    width-2*thickness,
+    height-thickness,
+    width-thickness,0,height-thickness,
+    180
+    );
+
 }}
 
 
